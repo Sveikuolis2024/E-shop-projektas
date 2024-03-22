@@ -20,7 +20,7 @@ public class TestingCheckoutPage extends Setup {
         homePage.clickProductInfo(1);
         productPage.selectProductType();
         productPage.selectProductTypeOfLadies();
-        Thread.sleep(1000);
+        Thread.sleep(1000); //pabandykime sleep pakeisti i waiters
         productPage.selectProductColor();
         productPage.selectSizeFromList(2);
         Thread.sleep(1000);
