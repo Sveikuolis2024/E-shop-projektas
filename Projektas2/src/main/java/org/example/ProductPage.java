@@ -87,7 +87,7 @@ public class ProductPage extends Base{
     public void selectProductColor(){
         colorWhiteButton.click();
     }
-    public void clickProductQuantity(){
+    public void clickProductQuantity(){ //clickProductQuantity() ir  selectProductQuantity3() sujungti i viena
         productQuantity.click();
     }
     public void selectProductQuantity3(){
