@@ -31,7 +31,7 @@ public class TestingCheckoutPage extends Setup {
         Thread.sleep(2000);
         productPage.clickProceedToSecureCheckoutButton();
         Thread.sleep(2000);
-        System.out.println(checkoutPage.productTittleText());
+        System.out.println(checkoutPage.productTittleText()); //istrinkime
         Assertions.assertEquals("The cool couple", checkoutPage.productTittleText());
         Assertions.assertEquals("Ladies Slim T-Shirt", checkoutPage.productNameText());
         Assertions.assertEquals("M", checkoutPage.productSizeMText());
