@@ -11,21 +11,23 @@ public class HomePage extends Base {
         super(driver);
     }
 
-    //    @FindBy(css = "input[value='tshirt']")
-//    private WebElement selectTshirtFromCategory;
     @FindBy(css = "input[value='bags']")
-    private WebElement selectBagsFromCategory;
+    private WebElement CategoryBags;
+    @FindBy(css = "[data-testid='base-product']")
+    private List<WebElement> itemsNamesList;
 
     @FindBy(xpath = ("//*[contains(text(), 'T-Shirts')]"))
-    private WebElement selectTShirt;
+    private WebElement CategoryTShirt;
+    @FindBy(xpath = "//*[contains(text(), 'Classic Unisex T-Shirt')]")
+    private WebElement classicUnisexTShirtText;
     @FindBy(css ="input[type= 'checkbox']")
-    private WebElement selectTypeOfWomen;
+    private WebElement TypeOfWomenFilter;
     @FindBy(xpath = ("//span[contains(text(), \"Men's\")]"))
-    private WebElement selectTypeOfMens;
+    private WebElement TypeOfMensFilter;
     @FindBy(xpath = ("//*[contains(text(), 'Unisex')]"))
-    private WebElement selectedItemsWithUnisex;
+    private WebElement ItemsWithUnisexText;
     @FindBy(css = ".css-gvhiif")
-    private WebElement clickViewMoreProductsButton;
+    private WebElement ViewMoreProductsButton;
     @FindBy(css = ".ProductCard_root__HqXTt")
     private List<WebElement> productInfo;
     @FindBy(css = "#filter-panel-header-category")
@@ -34,45 +36,32 @@ public class HomePage extends Base {
     private WebElement filterTypeList;
 
 
-
-
-
-//    @FindBy(xpath = "(//span[normalize-space()=\"Men's\"])[1]")
-//    private WebElement
-//    List<WebElements> elementsList =  driver.findElements(By.cssSelector(".facetContainerDiv"));
-//for(WebElement checkBox:elementsList) {
-//        int i=0;
-//        checkBox = elementsList.get(i);
-
-    //    public void selectTShirtFromCategory(){
-//        selectTshirtFromCategory.click();
-//    }
     public void selectBagsFromCategory() {
-        selectBagsFromCategory.click();
+        CategoryBags.click();
     }
 
     public void selectTShirt() {
-        selectTShirt.click();
+        CategoryTShirt.click();
     }
 
-    public boolean isTshirtDisplayed() {
-        return selectTShirt.isDisplayed();
+    public String getTshirtText() {
+        return classicUnisexTShirtText.getText();
     }
 
-    public boolean isBagsDisplayed() {
-        return selectBagsFromCategory.isDisplayed();
+    public String getBagsText(int numberOfText) {
+        return itemsNamesList.get(numberOfText -1).getText();
     }
-    public void selectTypeOfWomen1(){
-        selectTypeOfWomen.click();
+    public void selectTypeOfWomen(){
+        TypeOfWomenFilter.click();
     }
     public void selectTypeOfMENS(){
-        selectTypeOfMens.click();
+        TypeOfMensFilter.click();
     }
-    public boolean isSelectedItemsWithUnisexDisplayed(){
-        return selectedItemsWithUnisex.isDisplayed();
+    public String isSelectedItemsWithUnisexDisplayed(int numberOfText){
+        return itemsNamesList.get(numberOfText -1).getText();
     }
     public void clickViewMoreProductsButton(){
-        clickViewMoreProductsButton.click();
+        ViewMoreProductsButton.click();
     }
     public int getProductInfoCount(){
         return productInfo.size();

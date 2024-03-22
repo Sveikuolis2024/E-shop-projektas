@@ -15,8 +15,6 @@ public class CheckoutPage extends Base{
 
     @FindBy(xpath = "//*[@data-testid='cart-size' and text()='M']")
     private WebElement productSizeM;
-//    private WebElement productSizeM;
-//    pagal atributa ir teksta, kad tekste yra M.
 
 
     public String productTittleText(){
