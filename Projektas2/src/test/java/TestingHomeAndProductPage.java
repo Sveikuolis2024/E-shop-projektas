@@ -17,7 +17,7 @@ public class TestingHomeAndProductPage extends Setup {
         homePage.selectTShirt();
         Assertions.assertTrue(homePage.isTshirtDisplayed());
         homePage.selectBagsFromCategory();
-        Assertions.assertFalse(homePage.isBagsDisplayed());
+        Assertions.assertFalse(homePage.isBagsDisplayed()); //testas nepatikrina ar pasispaude mygtukai
     }
 
     @Test
@@ -26,7 +26,7 @@ public class TestingHomeAndProductPage extends Setup {
         homePage = new HomePage(driver);
         homePage.selectTypeOfWomen1();
         homePage.selectTypeOfMENS();
-        Assertions.assertTrue(homePage.isSelectedItemsWithUnisexDisplayed());
+        Assertions.assertTrue(homePage.isSelectedItemsWithUnisexDisplayed());//unisex visada displayed
     }
 
     @Test
