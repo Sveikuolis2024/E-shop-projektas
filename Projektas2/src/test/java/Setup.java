@@ -14,3 +14,4 @@ public class Setup {
         driver.manage().window().maximize();
     }
 }
+// Waiterius sudeti vietoj sleep
