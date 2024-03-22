@@ -13,20 +13,19 @@ public class TestingHomeAndProductPage extends Setup {
     void userCanSelectOnly1ProductByCategory() {
         base = new Base(driver);
         homePage = new HomePage(driver);
-//        homePage.selectTShirtFromCategory();
         homePage.selectTShirt();
-        Assertions.assertTrue(homePage.isTshirtDisplayed());
+        Assertions.assertEquals("Classic Unisex T-Shirt", homePage.getTshirtText());
         homePage.selectBagsFromCategory();
-        Assertions.assertFalse(homePage.isBagsDisplayed()); //testas nepatikrina ar pasispaude mygtukai
+        Assertions.assertEquals("Classic Tote",homePage.getBagsText(1));
     }
 
     @Test
     void userCanSelectProductsByType() {
         base = new Base(driver);
         homePage = new HomePage(driver);
-        homePage.selectTypeOfWomen1();
+        homePage.selectTypeOfWomen();
         homePage.selectTypeOfMENS();
-        Assertions.assertTrue(homePage.isSelectedItemsWithUnisexDisplayed());//unisex visada displayed
+        Assertions.assertEquals("Classic Unisex T-Shirt", homePage.isSelectedItemsWithUnisexDisplayed(1));
     }
 
     @Test
@@ -76,19 +75,15 @@ public class TestingHomeAndProductPage extends Setup {
         Assertions.assertEquals("€24.99", productPage.getProductPrice());
         Assertions.assertEquals("rgba(255, 255, 255, 1)", productPage.getButtonWhiteColor());
         Assertions.assertEquals("Select size", productPage.getProductShowsSize());
-        Assertions.assertEquals("S", productPage.getChooseSizeFromList(1));
-        Assertions.assertEquals("M", productPage.getChooseSizeFromList(2));
-        Assertions.assertEquals("L", productPage.getChooseSizeFromList(3));
-        Assertions.assertEquals("XL", productPage.getChooseSizeFromList(4));
-        Assertions.assertEquals("2XL", productPage.getChooseSizeFromList(5));
+        Assertions.assertEquals("S", productPage.getSizeFromList(1));
+        Assertions.assertEquals("M", productPage.getSizeFromList(2));
+        Assertions.assertEquals("L", productPage.getSizeFromList(3));
+        Assertions.assertEquals("XL", productPage.getSizeFromList(4));
+        Assertions.assertEquals("2XL", productPage.getSizeFromList(5));
         Assertions.assertTrue(productPage.isProductQuantityDisplayed());
         Assertions.assertTrue(productPage.productImageDisplayed());
         Assertions.assertTrue(productPage.isButtonBuyNowDisplayed());
-
-
     }
-
-    //    maximize window
     @Test
     void userSeeSelectedInformationInProductDetailsPage() throws InterruptedException {
         base = new Base(driver);
@@ -104,12 +99,8 @@ public class TestingHomeAndProductPage extends Setup {
         Assertions.assertEquals("rgba(241, 241, 247, 1)", productPage.getButtonWhiteColor());
         productPage.selectSizeFromList(2);
         Thread.sleep(1000);
-        Assertions.assertEquals("M", productPage.getChooseSizeFromList(2));
-        productPage.clickProductQuantity();
-        Thread.sleep(1000);
-        productPage.selectProductQuantity3();
-//        System.out.println(productPage.getChooseSizeFromList(2));
-//
+        Assertions.assertEquals("M", productPage.getSizeFromList(2));
+        productPage.clickProductQuantity(3);
     }
 
     @Test
@@ -125,13 +116,10 @@ public class TestingHomeAndProductPage extends Setup {
         productPage.selectProductColor();
         productPage.selectSizeFromList(2);
         Thread.sleep(1000);
-        productPage.clickProductQuantity();
-        Thread.sleep(1000);
-        productPage.selectProductQuantity3();
+        productPage.clickProductQuantity(3);
         productPage.clickBuyNowButton();
         Thread.sleep(2000);
         Assertions.assertTrue(productPage.proceedToSecureCheckoutButtonDisplayed());
-
     }
 
     @Test
@@ -146,9 +134,7 @@ public class TestingHomeAndProductPage extends Setup {
         Thread.sleep(1000);
         productPage.selectProductColor();
         Thread.sleep(1000);
-        productPage.clickProductQuantity();
-        Thread.sleep(1000);
-        productPage.selectProductQuantity3();
+        productPage.clickProductQuantity(3);
         productPage.clickBuyNowButton();
         Assertions.assertTrue(productPage.textComesRedWhenSizeIsEmptyIsDisplayed());
     }

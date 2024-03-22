@@ -1,10 +1,8 @@
 package org.example;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -25,11 +23,11 @@ public class ProductPage extends Base{
     @FindBy(xpath = "//p[normalize-space()='Select size']")
     private WebElement productShowsSize;
     @FindBy(css = ".gap-4 .Button_root__G_l9X")
-    private List<WebElement> chooseSizeFromList;
+    private List<WebElement> SizeFromListSelected;
     @FindBy(css = ".MuiFormControl-root.css-13sljp9")
     private WebElement productQuantity;
-    @FindBy(xpath = "//li[normalize-space()='3']")
-    private WebElement productQuantity3;
+    @FindBy(css = ".MuiMenuItem-root")
+    private List<WebElement> productQuantityList;
     @FindBy(xpath = "//button[normalize-space()='Buy now']")
     private WebElement buttonBuyNow;
     @FindBy(css = ".css-paipmi")
@@ -63,11 +61,11 @@ public class ProductPage extends Base{
     public String getProductShowsSize(){
         return productShowsSize.getText();
     }
-    public String getChooseSizeFromList(int numberOfSize){
-       return chooseSizeFromList.get(numberOfSize - 1).getText();
+    public String getSizeFromList(int numberOfSize){
+       return SizeFromListSelected.get(numberOfSize - 1).getText();
     }
     public void selectSizeFromList(int numberOfSize){
-        chooseSizeFromList.get(numberOfSize -1).click();
+        SizeFromListSelected.get(numberOfSize -1).click();
     }
     public boolean isProductQuantityDisplayed(){
         return productQuantity.isDisplayed();
@@ -87,12 +85,12 @@ public class ProductPage extends Base{
     public void selectProductColor(){
         colorWhiteButton.click();
     }
-    public void clickProductQuantity(){ //clickProductQuantity() ir  selectProductQuantity3() sujungti i viena
+    public void clickProductQuantity(int number) throws InterruptedException {
         productQuantity.click();
+        Thread.sleep(1000);
+        productQuantityList.get(number).click();
     }
-    public void selectProductQuantity3(){
-        productQuantity3.click();
-    }
+
     public boolean productImageDisplayed(){
         return productImage.isDisplayed();
     }
